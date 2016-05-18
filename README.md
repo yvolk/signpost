@@ -55,9 +55,11 @@ Signpost is not thread safe and probably will never be. Signpost objects are ver
 
 Google Android
 ------------
-*IMPORTANT: Do NOT use the DefaultOAuth`*` implementations on Android, since there's a bug in Android's java.net.HttpURLConnection that keeps it from working with some service providers. Instead, use the CommonsHttpOAuth`*` classes, since they are meant to be used with Apache Commons HTTP (that's what Android uses for HTTP anyway).*
+*IMPORTANT: Do NOT use the DefaultOAuth`*` implementations on Android, since there's a bug in Android's java.net.HttpURLConnection that keeps it from working with some service providers. Instead, use the CommonsHttpOAuth`*` classes, since they are meant to be used with [Apache HttpComponents](http://hc.apache.org/) (previously called "Apache Commons HTTP"). That's what was used before Android v.6 for HTTP anyway.*
 
-Signpost is already used in several applications running on Android, Google's software stack for mobile devices. In fact, Signpost has already signed thousands of HTTP requests at this very moment, as it is an integral part of [Qype Radar](http://www.qype.co.uk/go-mobile), our geo-sensitive mobile application for Android that finds the best places near you.
+If you are targeting Android 6 (API 23) and newer, you have to use repackaged [Android port of Apache HttpClient](https://github.com/smarek/httpclient-android) and the new Signpost extension: [signpost-httpclient-android](https://github.com/yvolk/signpost/tree/master/signpost-httpclient-android). The *signpost-httpclient-android* is used in [AndStatus social networking client](https://github.com/andstatus/andstatus), see ready to use jar file [here](https://github.com/andstatus/andstatus/tree/master/app/libs).
+
+Signpost is used in several applications running on Android, Google's software stack for mobile devices. In fact, Signpost has already signed thousands of HTTP requests at this very moment, as it is an integral part of [Qype Radar](http://www.qype.co.uk/go-mobile), our geo-sensitive mobile application for Android that finds the best places near you. 
 
 OAuth Service Providers
 ------------
